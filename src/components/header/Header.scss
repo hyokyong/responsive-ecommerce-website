@@ -1,0 +1,69 @@
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--gray-color);
+  z-index: var(--z-fixed);
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+
+    .logo-img {
+      font-size: var(--h1-font-size);
+    }
+
+      @media screen and (max-width: 768px) { //모바일 버젼에서만 동작하도록!
+        .nav-menu {
+          position: fixed;
+          top: var(--header-height);
+          right: -100%;
+          width: 80%;
+          height: 100%;
+          background-color: var(--white-color);
+          padding: 2rem;
+          transition: .5s;
+        }
+      }
+
+    .nav-menu-link {
+      color: var(--dark-color);
+      font-weight: var(--font-semi);
+      margin-bottom: 2rem;
+
+      &:hover {
+        color: var(--first-color);
+      }
+    }
+
+    &.show {
+      right: 0;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    nav {
+      justify-content: initial;
+
+      .nav-menu {
+        margin-left: auto; //왼쪽 정렬
+
+        .nav-menu-list {
+          display: flex;
+
+          .nav-menu-link {
+            margin-left: var(--mb-4);
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .bx-menu {
+        display: none;
+      }
+    }
+  }
+}

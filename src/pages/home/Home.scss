@@ -1,0 +1,300 @@
+main {
+  // 공통 부분
+  .section {
+    padding: 3rem 0 0 0;
+  }
+
+  .section-title {
+    font-size: var(--h2-font-size);
+    color: var(--dark-color);
+    margin: var(--mb-4) 0 var(--mb-1);
+    text-align: center;
+  }
+
+  .section-all {
+    display: block;
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi);
+    color: var(--dark-color-light);
+    text-align: center;
+    margin-bottom: var(--mb-2);
+  }
+
+  .home {
+    height: calc(100vh - var(--header-height)); //calc를 꼭 써줘야함
+    background-color: var(--gray-color);
+
+      .home-title-wrapper {
+        .home-title {
+          align-self: center;
+          font-size: var(--big-font-size);
+          line-height: 1;
+          letter-spacing: .5rem; //글자 간격
+          margin-bottom: 4rem;
+        }
+      }
+
+      .home-img {
+        img {
+          width: 260px;
+          position: absolute; //부모 없으니 브라우저 맨 아래로!
+          right: 0;
+          bottom: 0;
+        }
+      }
+  }
+
+  .collection {
+    .collection-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--gray-color);
+      padding: 0 1.5rem;
+      transition: .3s; //박스의 움직임
+
+      .collection-img {
+        width: 100px;
+      }
+
+      .collection-title {
+        h2 {
+          font-size: var(--h1-font-size);
+          line-height: 1.2;
+          margin-bottom: var(--mb-2);
+          text-transform: uppercase; //모든 글자를 대문자로 바꿔라!
+          font-weight: var(--font-semi);
+        }
+
+          .collection-view {
+            font-size: var(--small-font-size);
+            color: var(--dark-color-light);
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      &:hover {
+          transform: translateY(-.5rem); //위쪽으로 움직이도록!!
+      }
+
+      &.reverse {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .featured {
+    .featured-box {
+      position: relative;
+
+      .featured-img-box {
+        transition: .3s;
+
+        &:hover {
+          transform: translateY(-.5rem);
+        }
+
+        .new {
+          position: absolute;
+          background-color: var(--first-color);
+          color: var(--white-color);
+          padding: .3rem .75rem;
+          font-size: var(--small-font-size);
+        }
+
+        .featured-box-bg {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: var(--gray-color);
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  .offer {
+    .offer-bg {
+      background: url('https://raw.githubusercontent.com/bedimcode/responsive-ecommerce-website/master/assets/img/offer.jpg') no-repeat center/cover;
+
+      .offer-wrapper {
+        padding: 3.5rem .25rem; //padding으로 조절하기
+        background: rgba(0, 0, 0, .5);
+        color: white;
+        text-align: center;
+
+        .offer-title {
+          font-size: var(--h1-font-size);
+          letter-spacing: .2rem;
+          text-transform: uppercase;
+          font-weight: var(--font-semi);
+        }
+
+        .offer-desc {
+          margin-bottom: var(--mb-2);
+          letter-spacing: .2rem;
+        }
+      }
+    }
+  }
+
+  .new {
+    .new-box {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--gray-color);
+      overflow: hidden; //hover시 bottom -100%되어있던 부분이 올라올때, 넘치는 부분은 보여주지 않음
+
+      .new-box-hover {
+        position: absolute; //빨간색 부분을 따로 뺀다
+        background-color: rgba(229, 89, 71, .2);
+        width: 100%; //absolute 일 때 부모크기에 맞춰짐
+        height: 100%; //absolute 일 때 부모크기에 맞춰짐
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: -100%;
+        transition: .3s;
+      }
+
+      &:hover {
+        .new-box-hover {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  .newsletter {
+    text-align: center;
+
+    .newsletter-desc {
+      margin-bottom: var(--mb-2);
+      font-size: var(--small-font-size);
+      color: var(--dark-color-light);
+    }
+
+    .newsletter__form { //일직선에 있는 크기를 정해야할 때 그리드!
+      display: grid;
+      grid-template-columns: 1fr .5fr;
+
+      input {
+        outline: none;
+        border: none;
+        background-color: var(--gray-color);
+        padding: 0 1rem;
+      }
+    }
+  }
+
+  .sponsors {
+    margin-bottom: 5rem;
+
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .sponsor-img {
+      display: flex; //div안에 이미지를 가운데에 정렬
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 70px;
+        filter: opacity(70%);
+
+        &:hover {
+          filter: none
+        }
+      }
+    }
+  }
+
+  // PC to mobile
+  @media screen and (min-width: 768px) {
+    .home {
+      .container {
+        height: 100vh;
+
+        .home-title-wrapper {
+          padding: 0;
+          height: max-content;
+          align-self: center;
+
+          .home-title {
+            line-height: .8;
+            letter-spacing: 1.5rem;
+          }
+        }
+
+        .home-img {
+          img {
+            width: 370px;
+          }
+        }
+      }
+    }
+
+    .collection {
+      .bg-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+
+        .collection-box {
+          padding: .5rem 3rem 0;
+
+          .collection-img {
+            width: 130px;
+          }
+        }
+      }
+    }
+
+    .featured, .sponsors {
+      .bg-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .offer {
+      .offer__bg {
+        .offer__data {
+          padding: 5rem 0;
+        }
+      }
+    }
+
+    .new {
+      .bg-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .newsletter {
+      .newsletter__form {
+        width: 400px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .home {
+      .container {
+        .home-title-wrapper {
+          padding-left: 7rem;
+          padding-top: 5rem;
+        }
+
+        .home-img {
+          img {
+            right: 17%;
+          }
+        }
+      }
+    }
+  }
+}

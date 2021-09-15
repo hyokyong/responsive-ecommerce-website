@@ -1,0 +1,355 @@
+@import "reset";
+
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+  --font-semi: 600;
+  --font-bold: 700;
+}
+
+/*===== Colores =====*/
+:root {
+  --first-color: #E55947;
+  --first-color-alt: #D2321E;
+  --white-color: #FAFAFF;
+  --dark-color: #101010;
+  --dark-color-light: #606060;
+  --gray-color: #F0F1F3;
+}
+
+/*===== Font-size =====*/
+:root {
+  --body-font: 'Open Sans', sans-serif;
+  --big-font-size: 3rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .75rem;
+}
+
+/* 최소가 1024px가 되는순간 */
+@media screen and (min-width: 1024px) {
+  :root {
+    --big-font-size: 6rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .813rem;
+  }
+}
+
+/*===== Margenes =====*/
+:root {
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+}
+
+/*===== z index =====*/
+:root {
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*===== BASE =====*/
+html {
+  scroll-behavior: smooth;
+  //font-size: 8px;
+  //Small (sm)
+  @media screen and(min-width: 640px) {
+    //$font-standard: 8px !global;
+    //font-size: $font-standard !important;
+  }
+  //Medium (md)
+  @media screen and(min-width: 768px) {
+    //$font-standard: 10px !global;
+    //font-size: $font-standard !important;
+  }
+  // Large (lg)
+  @media screen and(min-width: 1024px) {
+    //$font-standard: 12px !global;
+    //font-size: $font-standard !important;
+  }
+  // Extra Large (xl)
+  @media screen and (min-width: 1280px) {
+    //$font-standard: 14px !global;
+    //font-size: $font-standard !important;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    color: var(--dark-color);
+    line-height: 1.6; //원래 1인거 여기서 바꿔줌
+    min-height: 100vh;
+    height: 100%;
+  }
+
+  //Tags
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+  span,
+  p,
+  small,
+  li,
+  section,
+  article,
+  div,
+  p {
+    font-weight: normal;
+  }
+
+  h1 {
+    //font-size: calc-unit-rem(48px);
+  }
+
+  h2 {
+    //font-size: calc-unit-rem(32px);
+  }
+
+  h3 {
+    //font-size: calc-unit-rem(24px);
+  }
+
+  h4 {
+    //font-size: calc-unit-rem(20px);
+  }
+  h5 {
+    //font-size: calc-unit-rem(18px);
+  }
+  h6 {
+    //font-size: calc-unit-rem(16px);
+  }
+
+  main {
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: var(--header-height);
+  }
+
+  p {
+    //font-size: calc-unit-rem(24px);
+    line-height: normal;
+    letter-spacing: normal;
+    word-break: keep-all;
+  }
+
+  small {
+    //font-size: calc-unit-rem(16px);
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--dark-color);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  /* 이미지의 크기를 정하지 않으면 부모보다 큰 이미지는 부모를 벗어남
+     max-width: 100% 은 부모에 크기를 맞추겠다는것! 반응형으로 줄어들때 사용함
+  */
+
+  video {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  //base class
+  //border
+  .no-border {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  // Text 정렬
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-right {
+    text-align: right;
+  }
+
+  //Visibility
+  .visible {
+    visibility: visible;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  // 정렬
+  .v-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .h-center {
+    display: flex;
+    justify-content: center;
+  }
+  .vh-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flex-start {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  //Flex layout
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+
+    .col {
+      //flex-basis: 100%;
+      flex-grow: 1;
+    }
+  }
+
+  .flex-reverse {
+    display: flex;
+    flex-wrap: wrap-reverse;
+
+    .col {
+      //flex-basis: 100%;
+      flex-grow: 1;
+    }
+  }
+
+  // Grid layout
+  .grid {
+    display: grid;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    &.grid-cols-2 {
+      -ms-grid-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    &.grid-cols-3 {
+      -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    &.grid-cols-4 {
+      -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
+
+/*===== SCROLL =====*/
+//스크롤 없애기
+/*
+* {
+  -ms-overflow-style: none; !* IE and Edge *!
+  scrollbar-width: none; !* Firefox *!
+}
+*::-webkit-scrollbar {
+  display: none; !* Chrome, Safari, Opera*!
+}
+*/
+
+//스크롤 커스터마이징
+//*::-webkit-scrollbar {
+//  width: 15px;
+//}
+//
+//*::-webkit-scrollbar-track {
+//  background-color: transparent;
+//}
+//*::-webkit-scrollbar-thumb {
+//  border-radius: 5px;
+//  background-color: gray;
+//}
+//*::-webkit-scrollbar-thumb:hover {
+//  background-color: gray;
+//}
+//*::-webkit-scrollbar-button {
+//  width: 0;
+//  height: 0;
+//}
+
+/*===== LAYOUT =====*/
+.container {
+  width: calc(100% - 3rem);
+  margin: 0 var(--mb-3);
+}
+
+.bg-grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-column-gap: 2rem;
+  row-gap: 2rem;
+}
+
+/*BUTTONS*/
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 1rem;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi);
+  transition: .3s;
+
+  &:hover {
+    background-color: var(--first-color-alt);
+  }
+}
+
+/* ===== MEDIA QUERIES=====*/
+
+// PC to mobile
+@media screen and (min-width: 768px) {
+  .section-all {
+    margin-bottom: var(--mb-4);
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 1rem);
+    justify-content: initial;
+  }
+}
+
+// PC 가운데 정렬
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}
+
